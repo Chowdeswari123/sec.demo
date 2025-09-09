@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Bio data</title>
+    </head> 
+</body>
+    </h1></h1>
+    <li>Name: chowdeswari</li>
+    <li>Age: 20</li>
+    <li>occupation: studying</li>
+    <li>Location: Anantapur</li>
+    <li>skills: HTML, CSS, Javascript</li>
+    <li>Education: B.tech in computer science</li>
+    <li>college: srit</li>
+    <table>
+        <tr>
+        </th>subject</th>
+           </th>Marks</th>   
+        </tr>
+        <tr>
+        </tr>td>english<td>
+            <td>90</td>
+        </tr>
+        <tr>
+        </td>maths<td>
+            <td>85</td>
+        </tr>
+        <tr>
+        </td>biology<td>
+            <td>95</td>
+            
+
+
+
+</body>
+</html>
