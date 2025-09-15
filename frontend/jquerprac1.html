@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Task Entry</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h2 { color: #333; }
+    h3 { color: #666; }
+    input { padding: 8px; width: 280px; }
+    button { padding: 8px 12px; margin: 5px; cursor: pointer; }
+    .task-item {
+      margin-bottom: 8px;
+      padding: 8px;
+      background: #f4f4f4;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .complete-btn {
+      background-color: yellow;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: rgb(130, 66, 66);
+    }
+  </style>
+</head>
+<body>
+  <h2>Hello jQuery</h2>
+  <h3>Just for timepass</h3>
+  <button id="btn">Click Me</button>
+
+  <div class="temp">
+    <p>This is a different <p>This is a different division on which we are using the class tags using jQuery</p>
+  </div>
+
+  <input type="text" id="myInput" placeholder="Type something...">
+  <p id="output">Hi this text</p>
+
+  <ul id="list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+  </ul>
+  <button id="add">Add Item</button>
+
+  <hr>
+
+  <h2>Enter a Task</h2>
+  <input type="text" id="task-input" placeholder="Enter task here">
+  <button id="add-task">Add Task</button>
+
+  <div id="task-list"></div>
+
+  <script>
+    $(document).ready(function () {
+      // ----- DEMO PART -----
+      $("#btn").click(function () {
+        $(".temp").toggle();
+      });
+
+      $("#myInput").on("input", function () {
+        $("#output").text($(this).val());
+      });
+
+      $("#add").click(function () {
+        $("#list").append("<li>New Item</li>");
+      });
+
+      // ----- TASK MANAGER PART -----
+      let canAdd = true;
+      $('#add-task').click(function () {
+        var task = $('#task-input').val().trim();
+        if (task !== '' && canAdd) {
+          var taskHtml = `
+            <div class="task-item">
+              <span class="task-text">${$('<div>').text(task).html()}</span>
+              <button class="complete-btn">Complete</button>
+            </div>`;
+          $('#task-list').append(taskHtml);
+          $('#task-input').val('');
+          canAdd = false; // restrict new task until completed
+        } else if (!canAdd) {
+          alert("⚠ Complete the current task before adding a new one!");
+        }
+      });
+
+      $('#task-list').on('click', '.complete-btn', function () {
+        $(this).parent().find('.task-text').addClass('completed');
+        $(this).remove();
+        canAdd = true;
+      });
+    });
+  </script>
+</body>
+</html>
